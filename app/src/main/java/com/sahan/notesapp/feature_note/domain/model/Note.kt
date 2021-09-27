@@ -3,6 +3,7 @@ package com.sahan.notesapp.feature_note.domain.model
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.sahan.notesapp.ui.theme.*
+import java.lang.Exception
 
 
 @Entity
@@ -19,3 +20,5 @@ data class Note(
         val noteColors = listOf(RedOrange, LightGreen, Violet, BabyBlue, RedPink)
     }
 }
+
+class InvalidNoteException(message: String) : Exception(message)

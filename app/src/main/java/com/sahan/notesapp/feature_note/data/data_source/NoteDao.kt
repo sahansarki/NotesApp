@@ -10,6 +10,15 @@ interface NoteDao {
     @Query("SELECT * FROM note")
     fun getNotes(): Flow<List<Note>>
     /*
+    
+    By using Flow to handle streams of values, you can transform data in complex multi-threaded ways,
+    by writing just a small bit of code!
+
+    You probably know that suspending functions can return a single value asynchronously.
+    When using suspending functions,
+    you don’t have to worry about threading, the Coroutines API does that for you!
+    Flow, however, can return multiple values asynchronously, and over time.
+
     Why this one isnt suspend?
     Because this one returns a flow
      */
