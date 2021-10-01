@@ -30,6 +30,16 @@ fun NoteScreen(
 ) {
     val state = viewModel.state.value
     val scaffoldState = rememberScaffoldState()
+
+    /**
+     * rememberCoroutineScope will keep the reference of the coroutine's scope in a specific point of the composition.
+     * Therefore, if a given composable is removed from the recomposition, that coroutine will be cancelled automatically.
+     * For instance, you have the following composable calls A -> B -> C.
+     * If you remember the coroutine scope in C and it is removed from the composition,
+     * the coroutine is automatically cancelled. But if you remember from A,
+     * pass the scope through B and C, use this scope in C, and then C is removed,
+     * the coroutine will continue running (because it was remembered in A)...
+     */
     val scope = rememberCoroutineScope()
 
     Scaffold(

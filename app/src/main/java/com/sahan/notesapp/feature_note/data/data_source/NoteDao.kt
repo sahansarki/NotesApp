@@ -31,6 +31,8 @@ interface NoteDao {
         REPLACE , that means if we call this insert function with an id
         that already exists in our database then it will just update the existing entry
 
+
+
      */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertNote(note: Note)
