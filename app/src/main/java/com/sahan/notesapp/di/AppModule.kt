@@ -28,7 +28,13 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideNoteRepository(repository: NoteRepository): NotesUseCases{
+    fun provideNoteRepository(db: NoteDatabase): NoteRepository{
+        return NoteRepositoryImpl(db.noteDao)
+    }
+
+    @Provides
+    @Singleton
+    fun provideNoteUseCases(repository: NoteRepository): NotesUseCases {
         return NotesUseCases(
             getNotes = GetNotes(repository = repository),
             deleteNote = DeleteNote(repository = repository),
