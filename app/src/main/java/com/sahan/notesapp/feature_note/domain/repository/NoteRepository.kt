@@ -5,7 +5,9 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.sahan.notesapp.feature_note.domain.model.Note
+import dagger.Provides
 import kotlinx.coroutines.flow.Flow
+
 
 interface NoteRepository {
     /*
