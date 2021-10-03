@@ -15,7 +15,15 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/**
+ * inject annotation,
+   we can annotate this with a inject and this will actually assign the value of this variable behind the scenes for us so
+   when we launch our app we know the value of this viewmodel and that is exactly the one in AppModule.
 
+ * So what will actually happen behind the scenes is dagger hilt will see okay we want a variable here or an object and that object is of type NoteUseCases.
+   then it will just search in all of its modules. If it can find a NotesUseCases dependency
+   then it says here is a dependency that is provided which is of type NotesUseCases so i will simply take this NotesUseCases and assign it to this variable.
+ */
 @HiltViewModel
 class NotesViewModel @Inject constructor(
     private val noteUseCases: NotesUseCases

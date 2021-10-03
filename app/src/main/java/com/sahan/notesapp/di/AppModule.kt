@@ -12,12 +12,26 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
+// This is a container for dependecies that live a specific amount of time.
+// we define all dependencies that just live as long as our application does
+
+/**
+ * That could for example be a retrofit instance , a room instance so just objects that we need throughout the whole lifetime of our application
+But with dagger-hilt we also have the option to scope our dependencies so we cannot only have an app module with singleton dependencies.
+
+ * We can also have for example a main activity module so a module that contains dependencies that only live as long as our main activity does.
+And when we then switch the activity we cant inject those main activity dependencies anymore in another activity.
+ */
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
-
-    @Provides
-    @Singleton
+    /**
+     * return olarak ;
+       what do we provide? well NoteDatabase for example.
+       in this function we return whatever we want to provide and whatever we want to inject in our classes later
+     */
+    @Provides // tell dagger-hilt this function we want to provide a dependency which is this NoteDatabase in our case
+    @Singleton // if we wouldnt have this annotation then every time we inject the NoteDatabase it would create a new instance of it
     fun provideNoteDatabase(app: Application) : NoteDatabase{
         return Room.databaseBuilder(
             app,

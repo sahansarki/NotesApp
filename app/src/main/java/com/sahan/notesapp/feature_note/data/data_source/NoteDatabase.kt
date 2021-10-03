@@ -18,7 +18,7 @@ abstract class NoteDatabase : RoomDatabase(){
 }
 
 /**
- * use_cases they just want to get the data that's all user cases care about
+ * use_cases they just want to get the data that's all use cases care about
 
  * use_cases contain our business logic
 
